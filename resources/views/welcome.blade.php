@@ -1,12 +1,11 @@
-@extends('layout.layouthome')
-
+@extends('home.layout')
 
 @section('header')
-    @include('component.header')
+    @include('home.header')
 @endsection
 
 @section('nav')
-    @include('component.nav')
+    @include('home.nav')
 @endsection
 
 @section('content')
@@ -15,5 +14,5 @@
 @endsection
 
 @section('footer')
-    @include('component.footer')
+    @include('home.footer')
 @endsection

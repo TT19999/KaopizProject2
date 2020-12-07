@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 class LoginController extends Controller
 {
     public function index(){
-        return view('login');
+        return view('login',['title'=>'login']);
     }
     public function login(Request $request){
         session(['token'=>'123']);
         session(['role'=> $request->name]);
-        return redirect('/');
+        return redirect('/post');
     }
     public function logout(){
         session(['token'=>null]);

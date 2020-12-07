@@ -16,15 +16,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Bài tập về nhà buổi 3, 4
+//Bài tập về nhà buổi 2,3,4,5
 
 Route::get('/',[HomeController::class,'index']);
+
 Route::get('/post', [PostController::class,'index'])->middleware('check_login');
 Route::post('/post',[PostController::class,'search']);
+
+Route::get('/post/{id}',[PostController::class,'show']);
+
 Route::get('/login', [LoginController::class,'index']);
 Route::post('/login',[LoginController::class,'login']);
 Route::get('/logout',[LoginController::class,'logout']);
-Route::get('/create',[PostController::class,'create'])->middleware('check_role');
 
-//bài tập về nhà buổi 2
-Route::get('/home',[HomeController::class, 'home']);
+Route::get('/create',[PostController::class,'create'])->middleware('check_role');
+Route::post('/create',[PostController::class,'store']);
+
+
+
+Route::get('/edit/{id}',[PostController::class,'edit'])->middleware('check_role');
+Route::post('/edit/{id}',[PostController::class,'update']);
+
+Route::get('/delete/{id}',[PostController::class, 'delete']);
+
+
+
