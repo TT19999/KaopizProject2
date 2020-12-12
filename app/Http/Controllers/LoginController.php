@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -10,9 +11,10 @@ class LoginController extends Controller
         return view('login',['title'=>'login']);
     }
     public function login(Request $request){
-        session(['token'=>'123']);
-        session(['role'=> $request->name]);
-        return redirect('/post');
+        if(Auth::attempt($request->only('email','password'))){
+            return redirect('/');
+        }
+        return back();
     }
     public function logout(){
         session(['token'=>null]);

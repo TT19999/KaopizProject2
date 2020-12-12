@@ -5,11 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>edit</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="{{asset('app.css')}}">
+        <link rel="stylesheet" href="/css/app.css">
     </head>
     <body >
         <div class="input-user">
-            
+          <div class="header">Chỉnh sửa bài viết</div>
             <div class="input-form">
                 <form method="POST"  >
                     @csrf
@@ -26,7 +26,15 @@
                   <label for="inputAddress2">description </label>
                   <input type="text" class="form-control" name="description" id="inputAddress2" value="{{ $post->description }}" >
                 </div>
-               
+                <div class="form-group col-md-8">
+                  <select class="mdb-select md-form" name="categories[]" multiple>
+                    @foreach ($categories as $category)
+                        <option value={{$category->id}}>{{$category->name}}</option>
+                    @endforeach  
+                  </select>
+                </div>
+                
+              
                 <button class="btn btn-dark" style="margin-left: 10px"><a href="/index"> Back</a></button>
                 <button  class="btn btn-dark" style="margin-left: 10px"  type="submit"> Save</button>
               </form>
