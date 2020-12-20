@@ -15,4 +15,4 @@
 
 @section('footer')
     @include('home.footer')
-@endsection
+@endsection  

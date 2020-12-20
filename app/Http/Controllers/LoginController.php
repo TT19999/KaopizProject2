@@ -11,14 +11,18 @@ class LoginController extends Controller
         return view('login',['title'=>'login']);
     }
     public function login(Request $request){
-        if(Auth::attempt($request->only('email','password'))){
+       
+        if(Auth::attempt($request->only('email','password'), true)){
             return redirect('/');
         }
         return back();
     }
     public function logout(){
-        session(['token'=>null]);
-        session(['role'=> null]);
+        Auth::logout();
         return redirect('/');
+    }
+
+    public function register(Request $request){
+        
     }
 }
